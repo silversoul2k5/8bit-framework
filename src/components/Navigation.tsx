@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,11 +18,10 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
+    { label: "Studio", href: "#about" },
     { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
+    { label: "Work", href: "#projects" },
+    { label: "Stack", href: "#skills" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -37,25 +35,29 @@ const Navigation = () => {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-black/40 backdrop-blur-md border-b border-cyan-400/10" : "bg-transparent"
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "border-b border-[var(--line)] bg-[var(--paper)]/82 backdrop-blur-xl" : "bg-transparent"
       }`}
-      initial={{ y: -100 }}
+      initial={false}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="#home">
-          <motion.div
-            className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-          >
-            8bit-framework
-          </motion.div>
-        </Link>
+      <div className="section-shell flex items-center justify-between py-4">
+        <a
+          href="#home"
+          onClick={(event) => {
+            event.preventDefault();
+            handleNavClick("#home");
+          }}
+          className="group flex items-center gap-3 text-sm font-semibold text-[var(--ink)]"
+          aria-label="Go to 8bit-framework home"
+        >
+          <span className="grid h-9 w-9 place-items-center rounded-lg border border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)]">
+            8
+          </span>
+          <span className="hidden sm:block">8bit-framework</span>
+        </a>
 
-        {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
           {navItems.map((item, idx) => (
             <motion.li
@@ -69,7 +71,7 @@ const Navigation = () => {
                   e.preventDefault();
                   handleNavClick(item.href);
                 }}
-                className="text-gray-300 hover:text-cyan-400 transition-colors text-sm font-medium"
+                className="text-sm font-medium text-[var(--muted)] transition-colors hover:text-[var(--ink)]"
               >
                 {item.label}
               </a>
@@ -77,24 +79,34 @@ const Navigation = () => {
           ))}
         </ul>
 
-        {/* Mobile Menu Button */}
+        <a
+          href="https://www.linkedin.com/in/arjun-c-518455335/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden min-h-10 items-center gap-2 rounded-lg border border-[var(--line)] bg-white/70 px-4 text-sm font-semibold text-[var(--ink)] hover:border-[var(--ink)] lg:inline-flex"
+        >
+          <span>LinkedIn</span>
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+
         <motion.button
-          className="md:hidden p-2"
+          className="rounded-lg border border-[var(--line)] bg-white/70 p-2 text-[var(--ink)] md:hidden"
           onClick={() => setIsOpen(!isOpen)}
           whileTap={{ scale: 0.95 }}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </motion.button>
       </div>
 
-      {/* Mobile Menu */}
       <motion.div
         className="md:hidden overflow-hidden"
         initial={{ height: 0 }}
         animate={{ height: isOpen ? "auto" : 0 }}
         transition={{ duration: 0.3 }}
       >
-        <ul className="bg-black/80 backdrop-blur-md border-t border-cyan-400/10 px-6 py-4 flex flex-col gap-4">
+        <ul className="mx-4 mb-4 flex flex-col gap-2 rounded-lg border border-[var(--line)] bg-[var(--paper)]/96 p-3 shadow-[0_18px_60px_rgba(10,9,9,0.12)] backdrop-blur-xl">
           {navItems.map((item, idx) => (
             <motion.li
               key={idx}
@@ -108,12 +120,23 @@ const Navigation = () => {
                   e.preventDefault();
                   handleNavClick(item.href);
                 }}
-                className="text-gray-300 hover:text-cyan-400 transition-colors font-medium"
+                className="block rounded-lg px-3 py-3 font-medium text-[var(--muted)] hover:bg-[var(--paper-soft)] hover:text-[var(--ink)]"
               >
                 {item.label}
               </a>
             </motion.li>
           ))}
+          <li>
+            <a
+              href="https://www.linkedin.com/in/arjun-c-518455335/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 rounded-lg px-3 py-3 font-semibold text-[var(--accent-deep)] hover:bg-[var(--paper-soft)]"
+            >
+              <span>LinkedIn</span>
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </li>
         </ul>
       </motion.div>
     </motion.nav>

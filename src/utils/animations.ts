@@ -1,8 +1,5 @@
 import { Variants } from "framer-motion";
 
-const easeOut = [0.16, 1, 0.3, 1]; // Custom cubic-bezier
-const easeIn = [0.42, 0, 1, 1]; // Custom cubic-bezier
-
 // Fade animations
 export const fadeInVariants: Variants = {
   hidden: { opacity: 0 },
@@ -87,7 +84,7 @@ export const hoverGlowVariants: Variants = {
 };
 
 // Number counter animation
-export const numberCounterVariants = (to: number): Variants => ({
+export const numberCounterVariants = (): Variants => ({
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,

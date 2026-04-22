@@ -15,26 +15,29 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
   highlight,
 }: SectionTitleProps) => {
   const textAlign = align === "left" ? "text-left" : align === "right" ? "text-right" : "text-center";
+  const subtitleAlign = align === "center" ? "mx-auto" : align === "right" ? "ml-auto" : "";
 
   return (
     <motion.div
       className={textAlign}
-      initial={{ opacity: 0, y: 20 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
     >
-      <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+      <h2 className="text-4xl font-semibold leading-[0.98] md:text-6xl">
         {title}
         {highlight && (
-          <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+          <span className="text-[var(--accent)]">
             {" "}
             {highlight}
           </span>
         )}
       </h2>
       {subtitle && (
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto">{subtitle}</p>
+        <p className={`mt-5 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg ${subtitleAlign}`}>
+          {subtitle}
+        </p>
       )}
     </motion.div>
   );

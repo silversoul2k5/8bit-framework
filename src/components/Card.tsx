@@ -19,16 +19,16 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(({
   return (
     <motion.div
       ref={ref}
-      className={`relative rounded-xl backdrop-blur-md border border-cyan-400/20 p-6 ${className}`}
-      initial={{ opacity: 0, y: 20 }}
+      className={`relative rounded-lg border border-[var(--line)] bg-[var(--surface)] p-6 shadow-[0_20px_80px_rgba(10,9,9,0.06)] backdrop-blur-md ${className}`}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5, delay }}
       whileHover={
         hoverEffect === "scale" || hoverEffect === "both"
           ? {
-              scale: 1.02,
-              boxShadow: "0 0 30px rgba(0, 217, 255, 0.3)",
+              y: -6,
+              boxShadow: "0 26px 90px rgba(10, 9, 9, 0.1)",
             }
           : {}
       }

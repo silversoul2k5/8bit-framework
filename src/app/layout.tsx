@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "8bit-framework | Creative Frontend Development",
-  description: "Building high-performance, visually stunning frontend experiences with smooth animations and modern UI/UX design.",
+  title: "8bit-framework | Frontend studio for new businesses",
+  description:
+    "8bit-framework is Arjun C's frontend startup building fast, polished websites and product interfaces for new businesses.",
   metadataBase: new URL("https://8bit-framework.dev"),
   openGraph: {
-    title: "8bit-framework | Creative Frontend Development",
-    description: "Building high-performance, visually stunning frontend experiences",
+    title: "8bit-framework | Frontend studio for new businesses",
+    description:
+      "Launch-ready frontend design, development, and animation for founders and young brands.",
     type: "website",
   },
 };
@@ -22,7 +24,7 @@ export default function RootLayout({
       lang="en"
       className="h-full scroll-smooth antialiased"
     >
-      <body className="min-h-full flex flex-col bg-black text-white">{children}</body>
+      <body className="min-h-full flex flex-col bg-[var(--paper)] text-[var(--ink)]">{children}</body>
     </html>
   );
 }

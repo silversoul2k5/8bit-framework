@@ -1,50 +1,48 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import SectionTitle from "../SectionTitle";
 import Card from "../Card";
-import { ExternalLink, Database } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
-
   const projects = [
     {
       id: 1,
-      title: "Gaming Optimization Tool",
-      category: "Web Application",
-      description: "A comprehensive tool for optimizing gaming performance with real-time monitoring and diagnostics",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-      color: "from-cyan-400 to-blue-600",
-      stats: { users: "5K+", improvement: "40%" },
+      title: "Startup launch page system",
+      category: "Business website",
+      description:
+        "A conversion-first homepage structure for new brands: hero, offer, proof, pricing, and contact sections.",
+      technologies: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
+      metric: "1 week launch sprint",
     },
     {
       id: 2,
-      title: "TechnoTweaks Content System",
-      category: "CMS Platform",
-      description: "YouTube content management system with scheduling, analytics, and automation features",
-      technologies: ["Next.js", "Node.js", "MongoDB", "Firebase"],
-      color: "from-purple-500 to-pink-500",
-      stats: { videos: "500+", engagement: "85%" },
+      title: "Animated portfolio framework",
+      category: "Personal brand",
+      description:
+        "A responsive portfolio layout with editorial typography, scroll reveals, project cards, and social contact paths.",
+      technologies: ["React", "Motion", "Responsive UI", "SEO"],
+      metric: "Built for creators",
     },
     {
       id: 3,
-      title: "Flutter Fitness App",
-      category: "Mobile App",
-      description: "Solo Leveling themed fitness tracking app with animated transitions and gamification",
-      technologies: ["Flutter", "Dart", "Firebase", "Flutter Animation"],
-      color: "from-orange-400 to-red-500",
-      stats: { downloads: "10K+", rating: "4.8★" },
+      title: "Founder dashboard concept",
+      category: "Product interface",
+      description:
+        "A crisp web app surface for tracking leads, tasks, and launch metrics without overwhelming the user.",
+      technologies: ["Dashboard UI", "Charts", "Components", "UX"],
+      metric: "Clean data views",
     },
     {
       id: 4,
-      title: "AI Assistant with ESP32",
-      category: "IoT Project",
-      description: "Smart home integration with voice control and AI-powered automation using ESP32",
-      technologies: ["ESP32", "Python", "TensorFlow", "Firebase"],
-      color: "from-green-400 to-emerald-600",
-      stats: { devices: "20+", automation: "95%" },
+      title: "Creator contact hub",
+      category: "Social profile",
+      description:
+        "A lightweight profile site that collects LinkedIn, GitHub, Instagram, XDA, and QR contact points in one place.",
+      technologies: ["Next Image", "Social links", "Mobile first", "Analytics-ready"],
+      metric: "Easy sharing",
     },
   ];
 
@@ -69,22 +67,19 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 md:py-32 px-6 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section id="projects" className="relative overflow-hidden border-b border-[var(--line)] bg-[var(--paper)] py-20 md:py-28">
+      <div className="section-shell relative z-10">
         <SectionTitle
-          title="Featured"
-          highlight="Projects"
-          subtitle="Showcasing our best work and creative solutions"
+          title="Selected"
+          highlight="projects"
+          subtitle="A practical showcase of the kind of frontend work 8bit-framework creates for founders, creators, and new business teams."
+          align="left"
         />
 
         <motion.div
-          className="grid md:grid-cols-2 gap-8 mt-16"
+          className="mt-14 grid gap-5 md:grid-cols-2"
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
@@ -92,86 +87,59 @@ const Projects = () => {
             <motion.div
               key={project.id}
               variants={itemVariants}
-              onClick={() => setSelectedProject(selectedProject === idx ? null : idx)}
-              className="cursor-pointer"
             >
-              <Card delay={idx * 0.1}>
-                <motion.div
-                  className={`h-48 rounded-lg bg-gradient-to-br ${project.color} p-6 flex flex-col justify-end mb-6 relative overflow-hidden group`}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* Animated background */}
-                  <motion.div
-                    className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"
-                  />
-                  <div className="relative z-10 flex justify-between items-end">
-                    <h3 className="text-2xl font-bold text-white">{project.title}</h3>
-                    <motion.div whileHover={{ scale: 1.1 }}>
-                      <ExternalLink className="text-white" size={24} />
-                    </motion.div>
-                  </div>
-                </motion.div>
-
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm text-cyan-400 font-semibold mb-1">{project.category}</p>
-                    <p className="text-gray-400">{project.description}</p>
-                  </div>
-
-                  {/* Stats */}
-                  <motion.div
-                    className="grid grid-cols-2 gap-4 pt-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: selectedProject === idx ? 1 : 0.5 }}
-                  >
-                    {Object.entries(project.stats).map(([key, value]) => (
-                      <div key={key} className="text-center">
-                        <p className="text-cyan-400 font-bold text-lg">{value}</p>
-                        <p className="text-xs text-gray-500 capitalize">{key}</p>
+              <Card delay={idx * 0.08} className="h-full overflow-hidden p-0">
+                <div className="flex h-full flex-col">
+                  <div className="border-b border-[var(--line)] bg-[var(--paper-soft)] p-6">
+                    <div className="flex items-start justify-between gap-6">
+                      <div>
+                        <p className="text-sm font-semibold text-[var(--accent-deep)]">{project.category}</p>
+                        <h3 className="mt-3 text-3xl font-semibold leading-tight">{project.title}</h3>
                       </div>
-                    ))}
-                  </motion.div>
+                      <ExternalLink size={22} className="mt-1 shrink-0 text-[var(--muted)]" aria-hidden="true" />
+                    </div>
+                  </div>
 
-                  {/* Technologies */}
-                  <motion.div
-                    className="flex flex-wrap gap-2 pt-4"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{
-                      opacity: selectedProject === idx ? 1 : 0.6,
-                      y: selectedProject === idx ? 0 : 5,
-                    }}
-                  >
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs bg-cyan-400/10 text-cyan-300 px-3 py-1 rounded-full border border-cyan-400/20"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </motion.div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="leading-7 text-[var(--muted)]">{project.description}</p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-lg border border-[var(--line)] bg-white/70 px-3 py-2 text-xs font-semibold text-[var(--ink)]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-auto flex items-center justify-between pt-8">
+                      <p className="font-semibold text-[var(--accent-deep)]">{project.metric}</p>
+                      <div className="grid h-10 w-10 place-items-center rounded-lg border border-[var(--line)]">
+                        <ArrowUpRight size={18} aria-hidden="true" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </Card>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* View All Button */}
         <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0 }}
+          className="mt-12"
+          initial={false}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
           <motion.a
             href="#contact"
-            className="inline-block px-8 py-3 border-2 border-cyan-400 text-cyan-400 rounded-lg font-semibold hover:bg-cyan-400 hover:text-black transition-all"
-            whileHover={{ scale: 1.05 }}
+            className="inline-flex items-center gap-2 rounded-lg border border-[var(--ink)] bg-[var(--ink)] px-6 py-4 font-semibold text-[var(--paper)] hover:bg-[var(--accent-deep)]"
+            whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
           >
-            Let's Discuss Your Project
+            Discuss your project
+            <ArrowUpRight size={18} aria-hidden="true" />
           </motion.a>
         </motion.div>
       </div>

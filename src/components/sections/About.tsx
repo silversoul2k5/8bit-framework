@@ -3,8 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SectionTitle from "../SectionTitle";
-import Card from "../Card";
-import { Code2, Palette, Zap } from "lucide-react";
+import { ArrowUpRight, Code2, Palette, ShieldCheck, UserRound } from "lucide-react";
 
 const About = () => {
   const containerVariants = {
@@ -30,84 +29,83 @@ const About = () => {
   const highlights = [
     {
       icon: Code2,
-      title: "Frontend Developer",
-      description: "Expert in React, Next.js, TypeScript, and modern web technologies",
+      title: "Frontend systems",
+      description: "React, Next.js, TypeScript, Tailwind, animation, and component-driven builds.",
     },
     {
       icon: Palette,
-      title: "UI/UX Designer",
-      description: "Creating beautiful, intuitive interfaces with a focus on user experience",
+      title: "Visual direction",
+      description: "Clean layouts, confident typography, responsive flows, and brand-aware details.",
     },
     {
-      icon: Zap,
-      title: "Performance Enthusiast",
-      description: "Optimizing for speed, responsiveness, and smooth interactions",
+      icon: ShieldCheck,
+      title: "Launch mindset",
+      description: "Simple handoff, maintainable code, fast pages, and copy that explains the offer.",
     },
   ];
 
   return (
-    <section id="about" className="py-20 md:py-32 px-6 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-5xl mx-auto relative z-10">
-        <SectionTitle title="About Me" subtitle="Frontend Developer & Creative Technologist" />
+    <section id="about" className="relative overflow-hidden border-b border-[var(--line)] bg-[var(--paper)] py-20 md:py-28">
+      <div className="section-shell relative z-10">
+        <SectionTitle
+          title="About"
+          highlight="Arjun"
+          subtitle="8bit-framework is a startup studio for founders who need the frontend to look clear, move smoothly, and convert early attention into trust."
+          align="left"
+        />
 
         <motion.div
-          className="mt-16 grid md:grid-cols-2 gap-12 items-center"
+          className="mt-14 grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-start"
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {/* Text Content */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <p className="text-lg text-gray-300 leading-relaxed">
-              I'm Arjun, a passionate frontend developer and creative technologist based in India. With a deep love for
-              building interactive digital experiences, I combine technical expertise with creative design thinking.
+          <motion.div variants={itemVariants} className="space-y-8">
+            <div className="flex items-start gap-4 border-b border-[var(--line)] pb-8">
+              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-lg border border-[var(--line)] bg-[var(--paper-soft)]">
+                <UserRound size={26} aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-[var(--accent-deep)]">Founder / frontend developer</p>
+                <h3 className="mt-2 text-3xl font-semibold">Arjun C</h3>
+              </div>
+            </div>
+
+            <p className="text-2xl font-semibold leading-tight md:text-4xl">
+              I build the first version of a brand web presence with the care usually saved for a mature product team.
             </p>
 
-            <p className="text-lg text-gray-300 leading-relaxed">
-              I specialize in creating high-performance web applications with stunning animations and smooth user
-              interactions. My focus is on turning complex ideas into elegant, beautiful solutions that users love.
+            <p className="text-lg leading-8 text-[var(--muted)]">
+              My work sits between design and engineering: structure the message, shape the interface, add motion where
+              it helps, then keep the frontend easy to extend as the business grows.
             </p>
 
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Whether it's crafting pixel-perfect interfaces, optimizing performance, or implementing smooth animations,
-              I'm committed to delivering excellence in every project.
-            </p>
-
-            <motion.div
-              className="flex gap-4 pt-4"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
+            <div className="flex flex-wrap gap-4 pt-2">
               <a
-                href="https://github.com/silver-soul7"
+                href="https://github.com/silversoul2k5"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cyan-400 hover:text-purple-500 transition-colors font-semibold"
+                className="inline-flex items-center gap-2 rounded-lg border border-[var(--line)] px-4 py-3 font-semibold hover:border-[var(--ink)]"
               >
-                GitHub →
+                GitHub
+                <ArrowUpRight size={16} aria-hidden="true" />
               </a>
               <a
-                href="https://instagram.com/silver.soul7"
+                href="https://www.instagram.com/silversoul2k5/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cyan-400 hover:text-purple-500 transition-colors font-semibold"
+                className="inline-flex items-center gap-2 rounded-lg border border-[var(--line)] px-4 py-3 font-semibold hover:border-[var(--ink)]"
               >
-                Instagram →
+                Instagram
+                <ArrowUpRight size={16} aria-hidden="true" />
               </a>
-            </motion.div>
+            </div>
           </motion.div>
 
-          {/* Highlights Grid */}
           <motion.div
             variants={containerVariants}
-            className="space-y-6"
+            className="grid gap-4"
           >
             {highlights.map((highlight, idx) => {
               const Icon = highlight.icon;
@@ -115,12 +113,12 @@ const About = () => {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="flex gap-4 items-start p-6 rounded-xl bg-gradient-to-r from-cyan-400/10 to-purple-600/10 border border-cyan-400/20 hover:border-cyan-400/50 transition-all"
+                  className="flex gap-5 rounded-lg border border-[var(--line)] bg-white/70 p-6"
                 >
-                  <Icon className="text-cyan-400 flex-shrink-0 mt-1" size={24} />
+                  <Icon className="mt-1 shrink-0 text-[var(--accent)]" size={24} aria-hidden="true" />
                   <div>
-                    <h3 className="text-lg font-semibold mb-2">{highlight.title}</h3>
-                    <p className="text-gray-400">{highlight.description}</p>
+                    <h3 className="mb-2 text-xl font-semibold">{highlight.title}</h3>
+                    <p className="leading-7 text-[var(--muted)]">{highlight.description}</p>
                   </div>
                 </motion.div>
               );

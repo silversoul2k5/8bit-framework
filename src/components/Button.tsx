@@ -1,17 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 interface ButtonProps {
   children: React.ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: "primary" | "secondary" | "outline";
+  variant?: "primary" | "secondary" | "outline" | "ghost";
   size?: "sm" | "md" | "lg";
   className?: string;
   disabled?: boolean;
   isExternal?: boolean;
   type?: "button" | "submit" | "reset";
+  icon?: React.ReactNode;
 }
 
 const Button = React.forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonProps>(({
@@ -24,52 +24,47 @@ const Button = React.forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPro
   disabled = false,
   isExternal = false,
   type = "button",
+  icon,
 }: ButtonProps, ref) => {
-  const baseStyles = "font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2";
+  const baseStyles =
+    "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border font-semibold transition-all duration-300";
 
   const variantStyles = {
-    primary: "bg-cyan-400 text-black hover:bg-purple-500 hover:shadow-lg hover:shadow-purple-500/50",
-    secondary: "bg-purple-600 text-white hover:bg-cyan-400 hover:text-black hover:shadow-lg hover:shadow-cyan-400/50",
+    primary: "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-[var(--accent-deep)]",
+    secondary: "border-[var(--accent)] bg-[var(--accent)] text-white hover:bg-[var(--ink)] hover:border-[var(--ink)]",
     outline:
-      "border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black hover:shadow-lg hover:shadow-cyan-400/50",
+      "border-[var(--ink)] bg-transparent text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)]",
+    ghost: "border-transparent bg-transparent text-[var(--ink)] hover:border-[var(--line)] hover:bg-white/70",
   };
 
   const sizeStyles = {
     sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    md: "px-5 py-3 text-sm",
+    lg: "px-6 py-4 text-base",
   };
 
-  const combinedClass = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+  const disabledStyles = disabled ? "pointer-events-none opacity-50" : "";
+  const combinedClass = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${className}`;
+  const content = (
+    <>
+      {icon}
+      <span>{children}</span>
+    </>
+  );
 
   if (href) {
-    if (isExternal) {
-      return (
-        <motion.a
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={combinedClass}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {children}
-        </motion.a>
-      );
-    }
-
     return (
-      <Link href={href}>
-        <motion.a
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          className={combinedClass}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {children}
-        </motion.a>
-      </Link>
+      <motion.a
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        href={href}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+        className={combinedClass}
+        whileHover={{ y: -2 }}
+        whileTap={{ scale: 0.98 }}
+      >
+        {content}
+      </motion.a>
     );
   }
 
@@ -80,10 +75,10 @@ const Button = React.forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPro
       onClick={onClick}
       disabled={disabled}
       type={type}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 0.98 }}
     >
-      {children}
+      {content}
     </motion.button>
   );
 });

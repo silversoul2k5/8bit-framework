@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -12,73 +12,80 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-cyan-400/10 bg-black/40 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        {/* Content */}
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
+    <footer className="border-t border-[var(--line)] bg-[var(--ink)] text-[var(--paper)]">
+      <div className="section-shell py-14">
+        <div className="mb-12 grid gap-10 md:grid-cols-[1.2fr_0.7fr_0.7fr]">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-4">
+            <h3 className="mb-4 text-3xl font-semibold">
               8bit-framework
             </h3>
-            <p className="text-gray-400 max-w-sm">
-              Building high-performance, visually stunning frontend experiences that engage and inspire.
+            <p className="max-w-md leading-7 text-white/64">
+              Frontend design and development for new businesses that need to look credible, move fast, and explain
+              their offer clearly.
             </p>
           </motion.div>
 
-          {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h4 className="font-semibold mb-4 text-cyan-400">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400">
-              {["Home", "About", "Services", "Projects", "Contact"].map((link) => (
-                <li key={link}>
+            <h4 className="mb-4 font-semibold">Sections</h4>
+            <ul className="space-y-2 text-white/64">
+              {[
+                ["Studio", "about"],
+                ["Services", "services"],
+                ["Work", "projects"],
+                ["Stack", "skills"],
+                ["Contact", "contact"],
+              ].map(([label, href]) => (
+                <li key={label}>
                   <a
-                    href={`#${link.toLowerCase()}`}
-                    className="hover:text-cyan-400 transition-colors"
+                    href={`#${href}`}
+                    className="hover:text-white"
                   >
-                    {link}
+                    {label}
                   </a>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Social */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h4 className="font-semibold mb-4 text-cyan-400">Follow</h4>
-            <div className="space-y-2 text-gray-400">
-              <a href="https://github.com/silver-soul7" target="_blank" rel="noopener noreferrer" className="block hover:text-cyan-400 transition-colors">
-                GitHub
+            <h4 className="mb-4 font-semibold">Connect</h4>
+            <div className="space-y-2 text-white/64">
+              <a href="https://github.com/silversoul2k5" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white">
+                <span>GitHub</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
               </a>
-              <a href="https://instagram.com/silver.soul7" target="_blank" rel="noopener noreferrer" className="block hover:text-cyan-400 transition-colors">
-                Instagram
+              <a href="https://www.instagram.com/silversoul2k5/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white">
+                <span>Instagram</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </a>
+              <a href="https://www.linkedin.com/in/arjun-c-518455335/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white">
+                <span>LinkedIn</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
               </a>
             </div>
           </motion.div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent mb-8" />
+        <div className="mb-8 h-px bg-white/16" />
 
-        {/* Bottom */}
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <motion.p
-            className="text-gray-500 text-sm"
-            initial={{ opacity: 0 }}
+            className="text-sm text-white/54"
+            initial={false}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
@@ -87,12 +94,12 @@ const Footer = () => {
 
           <motion.button
             onClick={scrollToTop}
-            className="mt-4 md:mt-0 p-3 rounded-lg border border-cyan-400/20 text-cyan-400 hover:bg-cyan-400/10 transition-colors"
-            whileHover={{ scale: 1.1 }}
+            className="rounded-lg border border-white/18 p-3 text-white hover:bg-white/10"
+            whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
-            title="Back to top"
+            aria-label="Back to top"
           >
-            <ArrowUp size={20} />
+            <ArrowUp size={20} aria-hidden="true" />
           </motion.button>
         </div>
       </div>

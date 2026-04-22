@@ -4,39 +4,39 @@ import React from "react";
 import { motion } from "framer-motion";
 import SectionTitle from "../SectionTitle";
 import Card from "../Card";
-import { Layout, Sparkles, Zap, Smartphone, Rocket, PaintbrushIcon } from "lucide-react";
+import { ArrowUpRight, Gauge, Layers3, MonitorSmartphone, PenLine, Rocket, Sparkles } from "lucide-react";
 
 const Services = () => {
   const services = [
     {
-      icon: Layout,
-      title: "Custom Website Development",
-      description: "Bespoke websites tailored to your unique brand and business goals with cutting-edge technology",
+      icon: Rocket,
+      title: "Launch websites",
+      description: "Business-ready websites with clear offers, focused pages, contact paths, and room to grow.",
     },
     {
-      icon: PaintbrushIcon,
-      title: "UI/UX Design",
-      description: "Beautiful, intuitive user interfaces designed for maximum engagement and conversion",
+      icon: PenLine,
+      title: "Interface design",
+      description: "Landing pages, dashboards, and product UI shaped with strong hierarchy and clean interaction.",
     },
     {
       icon: Sparkles,
-      title: "Interactive Animations",
-      description: "Smooth, meaningful animations that enhance user experience and bring interfaces to life",
+      title: "Motion systems",
+      description: "Framer Motion and GSAP details that make a frontend feel polished without slowing it down.",
     },
     {
-      icon: Zap,
-      title: "Performance Optimization",
-      description: "Lightning-fast loading times and smooth interactions for superior user experience",
+      icon: Gauge,
+      title: "Performance passes",
+      description: "Responsive layout, asset cleanup, speed tuning, and smoother experiences across devices.",
     },
     {
-      icon: Smartphone,
-      title: "Mobile App UI (Flutter)",
-      description: "Beautiful, responsive mobile app interfaces built with Flutter for iOS and Android",
+      icon: MonitorSmartphone,
+      title: "Responsive rebuilds",
+      description: "Modernizing older sites so they work naturally on mobile, tablet, and desktop.",
     },
     {
-      icon: Rocket,
-      title: "Web App Solutions",
-      description: "Full-featured web applications with real-time capabilities and seamless integrations",
+      icon: Layers3,
+      title: "Component kits",
+      description: "Reusable buttons, cards, sections, and design tokens that keep future updates consistent.",
     },
   ];
 
@@ -61,22 +61,19 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-20 md:py-32 px-6 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section id="services" className="relative overflow-hidden border-b border-[var(--line)] bg-[var(--paper-soft)] py-20 md:py-28">
+      <div className="section-shell relative z-10">
         <SectionTitle
-          title="Services"
-          highlight="Offered"
-          subtitle="Comprehensive solutions for your digital needs"
+          title="Frontend"
+          highlight="services"
+          subtitle="Everything a new business needs to look credible online: a clear website, polished UI, responsive implementation, and the small details that make people trust the screen."
+          align="left"
         />
 
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16"
+          className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
@@ -84,24 +81,17 @@ const Services = () => {
             const Icon = service.icon;
             return (
               <motion.div key={idx} variants={itemVariants}>
-                <Card delay={idx * 0.1}>
-                  <div className="h-full flex flex-col gap-4">
-                    <motion.div
-                      className="p-3 w-fit rounded-lg bg-cyan-400/20"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                    >
-                      <Icon className="text-cyan-400" size={28} />
-                    </motion.div>
+                <Card delay={idx * 0.06} className="h-full">
+                  <div className="flex h-full flex-col gap-5">
+                    <div className="flex items-center justify-between">
+                      <div className="grid h-12 w-12 place-items-center rounded-lg border border-[var(--line)] bg-[var(--paper-soft)]">
+                        <Icon className="text-[var(--accent)]" size={24} aria-hidden="true" />
+                      </div>
+                      <ArrowUpRight size={18} className="text-[var(--muted)]" aria-hidden="true" />
+                    </div>
 
-                    <h3 className="text-xl font-semibold">{service.title}</h3>
-                    <p className="text-gray-400 flex-grow">{service.description}</p>
-
-                    <motion.div
-                      className="text-cyan-400 font-semibold flex items-center gap-2 pt-4"
-                      whileHover={{ x: 5 }}
-                    >
-                      Learn more →
-                    </motion.div>
+                    <h3 className="text-2xl font-semibold">{service.title}</h3>
+                    <p className="flex-grow leading-7 text-[var(--muted)]">{service.description}</p>
                   </div>
                 </Card>
               </motion.div>
