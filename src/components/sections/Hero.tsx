@@ -53,7 +53,7 @@ const Hero = () => {
       className="section-anchor relative px-2 pb-4 pt-24 md:px-3 md:pt-30 lg:px-4 lg:pt-34"
     >
       <div className="section-shell">
-        <section className="panel-shell relative overflow-hidden rounded-[34px] px-3 py-5 md:px-7 md:py-7 lg:px-10 lg:py-9">
+        <section className="panel-shell relative overflow-hidden px-3 py-5 md:px-7 md:py-7 lg:px-10 lg:py-9">
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(255,255,255,0.96))]" />
           <div className="absolute inset-x-0 top-0 h-px bg-white/90" />
 
@@ -103,27 +103,6 @@ const Hero = () => {
                   ))}
                 </div>
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const element = document.querySelector("#contact");
-                      element?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                    className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[var(--ink)] px-6 text-base font-semibold text-[var(--paper)] shadow-[0_12px_36px_rgba(0,0,0,0.18)]"
-                  >
-                    <span>Let&apos;s collaborate</span>
-                    <ArrowUpRight size={18} aria-hidden="true" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={scrollToProjects}
-                    className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full border border-[var(--line-strong)] bg-white/90 px-6 text-base font-semibold text-[var(--ink)]"
-                  >
-                    <span>Selected work</span>
-                    <ArrowRight size={18} aria-hidden="true" />
-                  </button>
-                </div>
               </motion.div>
 
               <motion.div
