@@ -45,7 +45,7 @@ const projects = [
 
 const renderPreview = (previewSrc: string, title: string) => {
   return (
-    <div className="relative h-full overflow-hidden rounded-[24px] bg-[var(--paper)] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.05)]">
+    <div className="relative h-full overflow-hidden bg-[var(--paper)]">
       <Image
         src={previewSrc}
         alt={`${title} preview`}
@@ -53,7 +53,6 @@ const renderPreview = (previewSrc: string, title: string) => {
         className="object-cover object-top"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
     </div>
   );
 };
@@ -62,7 +61,7 @@ const Projects = () => {
   return (
     <section id="projects" className="section-anchor px-4 py-3 md:py-4">
       <div className="section-shell">
-        <section className="panel-shell relative overflow-hidden rounded-[32px] px-5 py-8 md:px-8 md:py-10 lg:px-10">
+        <section className="panel-shell relative overflow-hidden px-5 py-8 md:px-8 md:py-10 lg:px-10">
           <div className="absolute left-10 top-3 ghost-title hidden md:block">Portfolio</div>
 
           <motion.div
@@ -109,14 +108,14 @@ const Projects = () => {
                   href={project.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="group overflow-hidden rounded-[28px] border border-[var(--line)] bg-white/92 shadow-[0_14px_44px_rgba(0,0,0,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(0,0,0,0.12)]"
+                  className="group overflow-hidden border border-[var(--line)] bg-white/92 shadow-[0_14px_44px_rgba(0,0,0,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(0,0,0,0.12)]"
                   initial={false}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.8, delay: index * 0.08 }}
                   aria-label={`Open ${project.title} website`}
                 >
-                  <div className="h-[260px] border-b border-[var(--line)] p-4 md:h-[310px]">
+                  <div className="h-[325px] border-b border-[var(--line)] p-4 md:h-[390px]">
                     {renderPreview(project.previewSrc, project.title)}
                   </div>
 
