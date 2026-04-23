@@ -11,7 +11,7 @@ const projects = [
     studio: "Velora",
     description:
       "A premium dating brand experience with a polished login flow, modern visuals, and soft neon accents.",
-    previewSrc: "https://image.thum.io/get/width/760/https://velora-fawn-pi.vercel.app/",
+    previewSrc: "https://s.wordpress.com/mshots/v1/https://velora-fawn-pi.vercel.app?width=760",
     href: "https://velora-fawn-pi.vercel.app/",
   },
   {
@@ -20,7 +20,7 @@ const projects = [
     studio: "Dental Studio",
     description:
       "A refined healthcare landing page concept with warm typography, clear service cards, and appointment focus.",
-    previewSrc: "https://image.thum.io/get/width/760/https://demo-dental-care.vercel.app/",
+    previewSrc: "https://s.wordpress.com/mshots/v1/https://demo-dental-care.vercel.app?width=760",
     href: "https://demo-dental-care.vercel.app/",
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     studio: "Trading Interface",
     description:
       "A dark trading dashboard concept with multi-chart layouts, chart controls, and premium terminal styling.",
-    previewSrc: "https://image.thum.io/get/width/760/https://bitcharts-pro.vercel.app/",
+    previewSrc: "https://s.wordpress.com/mshots/v1/https://bitcharts-pro.vercel.app?width=760",
     href: "https://bitcharts-pro.vercel.app/",
   },
   {
@@ -38,7 +38,7 @@ const projects = [
     studio: "Interactive Tool",
     description:
       "A playful interactive wheel interface designed for quick decisions with fresh color segments and control panels.",
-    previewSrc: "https://image.thum.io/get/width/760/https://picker-wheel-beta.vercel.app/",
+    previewSrc: "https://s.wordpress.com/mshots/v1/https://picker-wheel-beta.vercel.app?width=760",
     href: "https://picker-wheel-beta.vercel.app/",
   },
 ];
