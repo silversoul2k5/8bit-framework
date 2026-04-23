@@ -22,11 +22,11 @@ export default function HeroPortrait() {
   };
 
   return (
-    <div className="group relative mx-auto w-full max-w-[420px]">
+    <div className="group relative mx-auto w-full max-w-[480px] xl:max-w-[520px]">
       <div className="absolute inset-x-[10%] bottom-2 h-14 rounded-full bg-black/20 blur-2xl" />
 
       <div
-        className="relative aspect-[0.78] overflow-hidden rounded-[28px] border border-white/70 bg-white/60 shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
+        className="relative aspect-[0.8] overflow-hidden rounded-[32px] border border-white/70 bg-white/60 shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
         onMouseMove={updatePointer}
         onMouseEnter={() => setPointer((current) => ({ ...current, active: true }))}
         onMouseLeave={() => setPointer((current) => ({ ...current, active: false }))}

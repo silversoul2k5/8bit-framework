@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useMemo, useRef } from "react";
+import { motion, useScroll, useTime, useTransform } from "framer-motion";
+import InteractiveWordmark from "../InteractiveWordmark";
 import HeroPortrait from "../HeroPortrait";
 import { ArrowRight, ArrowUpRight, Code2, ContactRound, Cpu, MessageCircle } from "lucide-react";
 
@@ -21,12 +22,24 @@ const marqueeItems = [
 
 const Hero = () => {
   const panelRef = useRef<HTMLElement | null>(null);
+  const time = useTime();
   const { scrollYProgress } = useScroll({
     target: panelRef,
     offset: ["start start", "end start"],
   });
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, 56]);
   const portraitY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const orbit = useTransform(time, (latest) => Math.sin(latest / 950) * 14);
+  const pitch = useTransform(time, (latest) => Math.cos(latest / 1200) * 6);
+
+  const heroMeta = useMemo(
+    () => [
+      "Frontend Studio",
+      "Startup Websites",
+      "Motion-led UI",
+      "Launch Ready",
+    ],
+    []
+  );
 
   const scrollToProjects = () => {
     const element = document.querySelector("#projects");
@@ -37,17 +50,17 @@ const Hero = () => {
     <section
       id="home"
       ref={panelRef}
-      className="section-anchor relative px-4 pb-8 pt-28 md:pt-36"
+      className="section-anchor relative px-2 pb-4 pt-24 md:px-3 md:pt-30 lg:px-4 lg:pt-34"
     >
       <div className="section-shell">
-        <section className="panel-shell relative overflow-hidden rounded-[34px] px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-10">
+        <section className="panel-shell hero-edge-fade relative overflow-hidden rounded-[34px] px-3 py-5 md:px-7 md:py-7 lg:px-10 lg:py-9">
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(255,255,255,0.96))]" />
           <div className="absolute inset-x-0 top-0 h-px bg-white/90" />
           <div className="absolute left-[-8%] top-[8%] h-52 w-52 rounded-full bg-white/50 blur-3xl" />
           <div className="absolute bottom-[10%] right-[-6%] h-64 w-64 rounded-full bg-black/6 blur-3xl" />
 
           <div className="relative z-10">
-            <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
               <div className="inline-flex items-center gap-3 rounded-full border border-[var(--line)] bg-white px-4 py-3 shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
                 <span className="h-3 w-3 rounded-full bg-[var(--success)]" />
                 <span className="text-sm font-medium">Available for new project</span>
@@ -57,23 +70,13 @@ const Hero = () => {
               </p>
             </div>
 
-            <motion.div
-              className="pointer-events-none absolute inset-x-4 top-24 z-0 md:inset-x-8 md:top-28 lg:inset-x-18 lg:top-32"
-              style={{ y: titleY }}
-            >
-              <div className="space-y-2 md:space-y-0">
-                <h2 className="outline-title text-[3.2rem] font-black uppercase leading-[0.84] sm:text-[5.5rem] md:text-[7rem] lg:pl-18 lg:text-[8.2rem]">
-                  8bit
-                </h2>
-                <h2 className="text-right text-[3.1rem] font-black uppercase leading-[0.84] text-[var(--ink)] sm:text-[5.2rem] md:text-[6.7rem] lg:pr-8 lg:text-[7.4rem]">
-                  framework
-                </h2>
-              </div>
-            </motion.div>
+            <div className="relative z-[1]">
+              <InteractiveWordmark />
+            </div>
 
-            <div className="relative grid min-h-[620px] items-end gap-8 pt-24 md:min-h-[720px] md:pt-32 lg:grid-cols-[0.66fr_0.9fr_0.44fr] lg:gap-10 lg:pt-44">
+            <div className="relative mt-4 grid min-h-[520px] items-end gap-8 md:min-h-[610px] lg:-mt-10 lg:grid-cols-[0.54fr_0.8fr_0.38fr] lg:gap-7">
               <motion.div
-                className="order-2 max-w-[360px] lg:order-1 lg:translate-y-12 lg:pb-10"
+                className="order-2 max-w-[360px] lg:order-1 lg:translate-y-8 lg:pb-8"
                 initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -93,6 +96,14 @@ const Hero = () => {
                   My projects usually live at the intersection of clean layout, motion, and practical frontend
                   delivery.
                 </p>
+
+                <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
+                  {heroMeta.map((item) => (
+                    <span key={item} className="rounded-full border border-[var(--line)] bg-white/76 px-3 py-2">
+                      {item}
+                    </span>
+                  ))}
+                </div>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <button
@@ -118,8 +129,8 @@ const Hero = () => {
               </motion.div>
 
               <motion.div
-                className="order-1 lg:order-2 lg:translate-y-4"
-                style={{ y: portraitY }}
+                className="order-1 lg:order-2 lg:-translate-y-2"
+                style={{ y: portraitY, x: orbit, rotate: pitch }}
                 initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -129,7 +140,7 @@ const Hero = () => {
               </motion.div>
 
               <motion.div
-                className="order-3 flex flex-col gap-4 self-center lg:self-end lg:pb-10 lg:items-end"
+                className="order-3 flex flex-col gap-4 self-center lg:self-end lg:pb-8 lg:items-end"
                 initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -157,9 +168,9 @@ const Hero = () => {
               </motion.div>
             </div>
 
-            <div className="soft-divider mt-4" />
+            <div className="soft-divider mt-3" />
 
-            <div className="mt-5 overflow-hidden">
+            <div className="mt-4 overflow-hidden">
               <div className="animate-marquee-slower flex min-w-max gap-8 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.24em] text-[var(--muted)] sm:text-sm">
                 {[...marqueeItems, ...marqueeItems].map((item, index) => (
                   <span key={`${item}-${index}`} className="inline-flex items-center gap-8">
