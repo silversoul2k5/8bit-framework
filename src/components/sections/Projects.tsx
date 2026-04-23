@@ -74,7 +74,7 @@ const Projects = () => {
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-3xl font-semibold uppercase leading-none md:text-5xl">
-                  /Previous Works
+                  /Projects
                 </p>
                 <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg">
                   A preview of recent website work and live product concepts for modern brands.

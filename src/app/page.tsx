@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import OpeningCountdown from "@/components/OpeningCountdown";
 import Hero from "@/components/sections/Hero";
+import TextMarquee from "@/components/sections/TextMarquee";
 import Projects from "@/components/sections/Projects";
 import Services from "@/components/sections/Services";
 import Skills from "@/components/sections/Skills";
@@ -14,6 +15,7 @@ export default function Home() {
       <Navigation />
       <main className="pb-4 md:pb-6">
         <Hero />
+        <TextMarquee />
         <Projects />
         <Services />
         <Skills />
