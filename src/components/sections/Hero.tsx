@@ -45,7 +45,7 @@ const Hero = () => {
     <section
       id="home"
       ref={panelRef}
-      className="section-anchor relative px-2 pb-4 pt-24 md:px-3 md:pt-30 lg:px-4 lg:pt-34"
+      className="section-anchor relative px-2 pb-4 pt-36 md:px-3 md:pt-40 lg:px-4 lg:pt-44"
     >
       <div className="section-shell">
         <section className="panel-shell relative overflow-hidden px-3 py-5 md:px-7 md:py-7 lg:px-10 lg:py-9">
@@ -82,12 +82,13 @@ const Hero = () => {
                   Building clean, animated frontends for new businesses.
                 </h1>
                 <p className="mt-5 text-lg leading-8 text-[var(--muted)] md:text-[1.22rem]">
-                  I&apos;m Arjun, founder of 8bit-framework. I design and build portfolio sites, launch pages,
-                  product surfaces, and polished UI details that help young brands feel sharp from day one.
+                  I&apos;m Arjun, founder of 8bit-framework. I build static and animated websites, modern frontend systems, and interactive user experiences.
                 </p>
                 <p className="mt-4 text-base leading-7 text-[var(--muted)]">
-                  My projects usually live at the intersection of clean layout, motion, and practical frontend
-                  delivery.
+                  I also develop hardware projects using Arduino, ESP32, and microcontrollers combining software and real-world systems.
+                </p>
+                <p className="mt-4 text-base leading-7 text-[var(--muted)]">
+                  Focused on clean design, motion, and performance-driven development.
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)]">
