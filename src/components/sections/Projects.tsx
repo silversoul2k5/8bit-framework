@@ -11,7 +11,7 @@ const projects = [
     studio: "Velora",
     description:
       "A premium dating brand experience with a polished login flow, modern visuals, and soft neon accents.",
-    previewSrc: "/images/velora-preview.png",
+    previewSrc: "https://image.thum.io/get/https://velora-fawn-pi.vercel.app/",
     href: "https://velora-fawn-pi.vercel.app/",
   },
   {
@@ -20,7 +20,7 @@ const projects = [
     studio: "Dental Studio",
     description:
       "A refined healthcare landing page concept with warm typography, clear service cards, and appointment focus.",
-    previewSrc: "/images/demo-dental-care-preview.png",
+    previewSrc: "https://image.thum.io/get/https://demo-dental-care.vercel.app/",
     href: "https://demo-dental-care.vercel.app/",
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     studio: "Trading Interface",
     description:
       "A dark trading dashboard concept with multi-chart layouts, chart controls, and premium terminal styling.",
-    previewSrc: "/images/bitcharts-pro-preview.png",
+    previewSrc: "https://image.thum.io/get/https://bitcharts-pro.vercel.app/",
     href: "https://bitcharts-pro.vercel.app/",
   },
   {
@@ -38,7 +38,7 @@ const projects = [
     studio: "Interactive Tool",
     description:
       "A playful interactive wheel interface designed for quick decisions with fresh color segments and control panels.",
-    previewSrc: "/images/picker-wheel-preview.png",
+    previewSrc: "https://image.thum.io/get/https://picker-wheel-beta.vercel.app/",
     href: "https://picker-wheel-beta.vercel.app/",
   },
 ];
@@ -104,13 +104,17 @@ const Projects = () => {
 
             <div className="mt-8 grid gap-5 md:grid-cols-2">
               {projects.map((project, index) => (
-                <motion.article
+                <motion.a
                   key={project.title}
-                  className="overflow-hidden rounded-[28px] border border-[var(--line)] bg-white/92 shadow-[0_14px_44px_rgba(0,0,0,0.05)]"
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="group overflow-hidden rounded-[28px] border border-[var(--line)] bg-white/92 shadow-[0_14px_44px_rgba(0,0,0,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_54px_rgba(0,0,0,0.12)]"
                   initial={false}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.8, delay: index * 0.08 }}
+                  aria-label={`Open ${project.title} website`}
                 >
                   <div className="h-[260px] border-b border-[var(--line)] p-4 md:h-[310px]">
                     {renderPreview(project.previewSrc, project.title)}
@@ -142,17 +146,8 @@ const Projects = () => {
                         {project.studio}
                       </span>
                     </div>
-
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex min-h-11 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--paper)] px-5 py-3 text-sm font-semibold text-[var(--ink)] transition hover:bg-white"
-                    >
-                      Visit site
-                    </a>
                   </div>
-                </motion.article>
+                </motion.a>
               ))}
             </div>
           </motion.div>
