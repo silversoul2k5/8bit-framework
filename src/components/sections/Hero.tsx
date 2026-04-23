@@ -15,18 +15,15 @@ const socialLinks = [
 
 const heroHeading = "Building clean, animated frontends for new businesses.";
 
-const letterVariant = {
-  rest: { rotateX: 0, opacity: 1 },
-  hover: (index: number) => ({
-    rotateX: [0, -180, 0],
-    opacity: [1, 0.3, 1],
-    transition: {
-      duration: 0.7,
-      delay: index * 0.02,
-      ease: "easeOut",
-    },
-  }),
-};
+const letterHoverAnimation = (index: number) => ({
+  rotateX: [0, -180, 0],
+  opacity: [1, 0.3, 1],
+  transition: {
+    duration: 0.7,
+    delay: index * 0.02,
+    ease: [0.22, 1, 0.36, 1],
+  },
+});
 
 const Hero = () => {
   const panelRef = useRef<HTMLElement | null>(null);
@@ -93,16 +90,13 @@ const Hero = () => {
                 </p>
                 <motion.h1
                   className="mt-4 text-4xl font-extrabold leading-tight md:text-[3.25rem] lg:text-[4rem]"
-                  initial="rest"
-                  whileHover="hover"
                   style={{ perspective: 800 }}
                 >
                   {heroHeading.split("").map((letter, index) => (
                     <motion.span
                       key={`${letter}-${index}`}
                       className="inline-block"
-                      custom={index}
-                      variants={letterVariant}
+                      whileHover={letterHoverAnimation(index)}
                     >
                       {letter === " " ? "\u00A0" : letter}
                     </motion.span>
