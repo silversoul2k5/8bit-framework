@@ -4,12 +4,12 @@ import { useMemo, useRef } from "react";
 import { motion, useScroll, useTime, useTransform } from "framer-motion";
 import InteractiveWordmark from "../InteractiveWordmark";
 import HeroPortrait from "../HeroPortrait";
-import { ArrowUpRight, ExternalLink, Github, Instagram, Linkedin } from "lucide-react";
+import { ArrowUpRight, Code2, ContactRound, ExternalLink, MessageCircle } from "lucide-react";
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/silversoul2k5", icon: Github },
-  { label: "Instagram", href: "https://www.instagram.com/silversoul2k5/", icon: Instagram },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/arjun-c-518455335/", icon: Linkedin },
+  { label: "GitHub", href: "https://github.com/silversoul2k5", icon: Code2 },
+  { label: "Instagram", href: "https://www.instagram.com/silversoul2k5/", icon: MessageCircle },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/arjun-c-518455335/", icon: ContactRound },
   { label: "XDA Forums", href: "#contact", icon: ExternalLink },
 ];
 
