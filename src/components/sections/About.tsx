@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import SectionTitle from "../SectionTitle";
 import { ArrowUpRight, Code2, Palette, ShieldCheck, UserRound } from "lucide-react";

@@ -1,140 +1,94 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
-import SectionTitle from "../SectionTitle";
-import { BadgeCheck, CheckCircle2, Cpu, TerminalSquare, WandSparkles, Workflow } from "lucide-react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
 const Skills = () => {
-  const stack = [
+  const experiences = [
     {
-      icon: TerminalSquare,
-      category: "Frontend",
-      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      company: "8bit-framework",
+      role: "Founder / Frontend Developer",
+      period: "2026 - Now",
+      summary:
+        "Building launch pages, portfolio sites, and startup-facing frontend systems with motion, responsive layouts, and clear visual hierarchy.",
     },
     {
-      icon: WandSparkles,
-      category: "Design",
-      skills: ["Figma-friendly UI", "Typography", "Responsive layouts", "Micro-interactions"],
+      company: "Independent web builds",
+      role: "Design + Development",
+      period: "2024 - Now",
+      summary:
+        "Personal projects and freelance-style experiments focused on modern website structure, component systems, and polished interaction details.",
     },
     {
-      icon: Workflow,
-      category: "Delivery",
-      skills: ["Git workflow", "Reusable components", "SEO metadata", "Clean handoff"],
-    },
-    {
-      icon: Cpu,
-      category: "Experiments",
-      skills: ["Flutter UI", "Firebase", "ESP32", "Creator tools"],
+      company: "Community & side experiments",
+      role: "UI Explorer / Builder",
+      period: "Ongoing",
+      summary:
+        "Testing ideas across Android communities, interface studies, and product concepts to sharpen both frontend craft and shipping speed.",
     },
   ];
-
-  const process = [
-    "Clarify the offer and user path",
-    "Design the page structure and visual rhythm",
-    "Build responsive components",
-    "Tune motion, speed, and handoff details",
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const categoryVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
 
   return (
-    <section id="skills" className="relative overflow-hidden border-b border-[var(--line)] bg-[var(--paper-soft)] py-20 md:py-28">
-      <div className="section-shell relative z-10">
-        <SectionTitle
-          title="Stack and"
-          highlight="process"
-          subtitle="The work is intentionally practical: pick a clear message, make the interface feel premium, and ship a codebase that can keep moving."
-          align="left"
-        />
-
-        <motion.div
-          className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4"
-          variants={containerVariants}
+    <section id="experience" className="section-anchor px-4 py-3 md:py-4">
+      <div className="section-shell">
+        <motion.section
+          className="relative overflow-hidden rounded-[32px] border border-white/12 bg-[#151515] px-5 py-8 text-white shadow-[0_30px_80px_rgba(0,0,0,0.22)] md:px-8 md:py-10"
           initial={false}
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.85 }}
         >
-          {stack.map((category, catIdx) => {
-            const Icon = category.icon;
+          <div className="absolute left-7 top-3 text-[clamp(3.2rem,10vw,8rem)] font-black uppercase leading-none text-white/[0.04]">
+            Experience
+          </div>
 
-            return (
-              <motion.div
-                key={category.category}
-                variants={categoryVariants}
-                className="rounded-lg border border-[var(--line)] bg-white/70 p-6"
-              >
-                <Icon className="mb-5 text-[var(--accent)]" size={26} aria-hidden="true" />
-                <h3 className="text-2xl font-semibold">{category.category}</h3>
+          <div className="relative z-10">
+            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-start">
+              <div>
+                <p className="text-3xl font-semibold uppercase leading-none md:text-5xl">/Experience</p>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-white/68 md:text-lg">
+                  A growing frontend path shaped by startup work, side builds, and design-heavy implementation.
+                </p>
+              </div>
 
-                <div className="mt-6 space-y-3">
-                  {category.skills.map((skill, skillIdx) => (
-                    <motion.div
-                      key={skill}
-                      className="flex items-start gap-2 text-sm font-medium text-[var(--muted)]"
-                      initial={false}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: catIdx * 0.08 + skillIdx * 0.04 }}
-                    >
-                      <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-[var(--accent)]" aria-hidden="true" />
-                      <span>{skill}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        <motion.div
-          className="mt-12 grid gap-5 lg:grid-cols-[0.8fr_1.2fr]"
-          variants={containerVariants}
-          initial={false}
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <motion.div variants={categoryVariants} className="rounded-lg border border-[var(--line)] bg-[var(--ink)] p-7 text-[var(--paper)]">
-            <BadgeCheck size={28} aria-hidden="true" />
-            <p className="mt-8 text-4xl font-semibold leading-none">New business friendly</p>
-            <p className="mt-5 leading-7 text-white/70">
-              No bloated agency ritual. Just strategy, design, code, and clear communication around what your first
-              customers need to understand.
-            </p>
-          </motion.div>
-
-          <motion.div variants={categoryVariants} className="rounded-lg border border-[var(--line)] bg-white/70 p-7">
-            <h3 className="text-2xl font-semibold">Build process</h3>
-            <div className="mt-7 grid gap-4 md:grid-cols-2">
-              {process.map((item, idx) => (
-                <div key={item} className="flex gap-4">
-                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[var(--line)] bg-[var(--paper-soft)] text-sm font-semibold">
-                    0{idx + 1}
-                  </span>
-                  <p className="leading-7 text-[var(--muted)]">{item}</p>
-                </div>
-                ))}
+              <div className="rounded-[24px] border border-white/12 bg-white/6 p-5">
+                <Sparkles size={22} aria-hidden="true" />
+                <p className="mt-5 text-3xl font-semibold">Active now</p>
+                <p className="mt-3 max-w-[240px] text-sm leading-6 text-white/62">
+                  Shipping responsive frontends, animated sections, and polished portfolio-style experiences.
+                </p>
+              </div>
             </div>
-          </motion.div>
-        </motion.div>
+
+            <div className="mt-8 divide-y divide-white/10 rounded-[28px] border border-white/10 bg-white/[0.03]">
+              {experiences.map((item, index) => (
+                <motion.article
+                  key={item.company}
+                  className="grid gap-6 px-5 py-6 md:px-7 lg:grid-cols-[1fr_auto]"
+                  initial={false}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.75, delay: index * 0.08 }}
+                >
+                  <div>
+                    <h3 className="text-2xl font-semibold">{item.company}</h3>
+                    <p className="mt-2 text-lg text-white/74">{item.role}</p>
+                    <p className="mt-4 max-w-3xl leading-7 text-white/58">{item.summary}</p>
+                  </div>
+
+                  <div className="flex items-start gap-4 lg:flex-col lg:items-end">
+                    <span className="rounded-full border border-white/12 bg-white/7 px-4 py-2 text-sm font-medium text-white/70">
+                      {item.period}
+                    </span>
+                    <div className="grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-white/7 text-white/72">
+                      <ArrowUpRight size={17} aria-hidden="true" />
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+          </div>
+        </motion.section>
       </div>
     </section>
   );
