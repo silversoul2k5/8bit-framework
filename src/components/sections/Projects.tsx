@@ -50,9 +50,8 @@ const renderPreview = (previewSrc: string, title: string) => {
         src={previewSrc}
         alt={`${title} preview`}
         fill
-        className="object-contain object-top"
+        className="object-cover object-top"
         sizes="(max-width: 768px) 100vw, 50vw"
-        priority={false}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
     </div>
@@ -117,7 +116,7 @@ const Projects = () => {
                   transition={{ duration: 0.8, delay: index * 0.08 }}
                   aria-label={`Open ${project.title} website`}
                 >
-                  <div className="h-[140px] border-b border-[var(--line)] p-4 md:h-[170px]">
+                  <div className="h-[260px] border-b border-[var(--line)] p-4 md:h-[310px]">
                     {renderPreview(project.previewSrc, project.title)}
                   </div>
 
