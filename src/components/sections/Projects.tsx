@@ -11,7 +11,7 @@ const projects = [
     studio: "Velora",
     description:
       "A premium dating brand experience with a polished login flow, modern visuals, and soft neon accents.",
-    previewSrc: "https://image.thum.io/get/https://velora-fawn-pi.vercel.app/",
+    previewSrc: "https://image.thum.io/get/width/760/https://velora-fawn-pi.vercel.app/",
     href: "https://velora-fawn-pi.vercel.app/",
   },
   {
@@ -20,7 +20,7 @@ const projects = [
     studio: "Dental Studio",
     description:
       "A refined healthcare landing page concept with warm typography, clear service cards, and appointment focus.",
-    previewSrc: "https://image.thum.io/get/https://demo-dental-care.vercel.app/",
+    previewSrc: "https://image.thum.io/get/width/760/https://demo-dental-care.vercel.app/",
     href: "https://demo-dental-care.vercel.app/",
   },
   {
@@ -29,7 +29,7 @@ const projects = [
     studio: "Trading Interface",
     description:
       "A dark trading dashboard concept with multi-chart layouts, chart controls, and premium terminal styling.",
-    previewSrc: "https://image.thum.io/get/https://bitcharts-pro.vercel.app/",
+    previewSrc: "https://image.thum.io/get/width/760/https://bitcharts-pro.vercel.app/",
     href: "https://bitcharts-pro.vercel.app/",
   },
   {
@@ -38,7 +38,7 @@ const projects = [
     studio: "Interactive Tool",
     description:
       "A playful interactive wheel interface designed for quick decisions with fresh color segments and control panels.",
-    previewSrc: "https://image.thum.io/get/https://picker-wheel-beta.vercel.app/",
+    previewSrc: "https://image.thum.io/get/width/760/https://picker-wheel-beta.vercel.app/",
     href: "https://picker-wheel-beta.vercel.app/",
   },
 ];
@@ -50,10 +50,11 @@ const renderPreview = (previewSrc: string, title: string) => {
         src={previewSrc}
         alt={`${title} preview`}
         fill
-        className="object-cover"
+        className="object-contain object-top"
         sizes="(max-width: 768px) 100vw, 50vw"
+        priority={false}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
     </div>
   );
 };
@@ -116,7 +117,7 @@ const Projects = () => {
                   transition={{ duration: 0.8, delay: index * 0.08 }}
                   aria-label={`Open ${project.title} website`}
                 >
-                  <div className="h-[260px] border-b border-[var(--line)] p-4 md:h-[310px]">
+                  <div className="h-[140px] border-b border-[var(--line)] p-4 md:h-[170px]">
                     {renderPreview(project.previewSrc, project.title)}
                   </div>
 
