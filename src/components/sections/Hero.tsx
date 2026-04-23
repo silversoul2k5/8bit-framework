@@ -53,11 +53,9 @@ const Hero = () => {
       className="section-anchor relative px-2 pb-4 pt-24 md:px-3 md:pt-30 lg:px-4 lg:pt-34"
     >
       <div className="section-shell">
-        <section className="panel-shell hero-edge-fade relative overflow-hidden rounded-[34px] px-3 py-5 md:px-7 md:py-7 lg:px-10 lg:py-9">
+        <section className="panel-shell relative overflow-hidden rounded-[34px] px-3 py-5 md:px-7 md:py-7 lg:px-10 lg:py-9">
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.82),rgba(255,255,255,0.96))]" />
           <div className="absolute inset-x-0 top-0 h-px bg-white/90" />
-          <div className="absolute left-[-8%] top-[8%] h-52 w-52 rounded-full bg-white/50 blur-3xl" />
-          <div className="absolute bottom-[10%] right-[-6%] h-64 w-64 rounded-full bg-black/6 blur-3xl" />
 
           <div className="relative z-10">
             <div className="mb-6 flex flex-wrap items-center justify-between gap-4 lg:mb-8">
