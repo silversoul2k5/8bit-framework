@@ -4,26 +4,16 @@ import { useMemo, useRef } from "react";
 import { motion, useScroll, useTime, useTransform } from "framer-motion";
 import InteractiveWordmark from "../InteractiveWordmark";
 import HeroPortrait from "../HeroPortrait";
-import { ArrowUpRight, Code2, ContactRound, ExternalLink, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Cpu, Github, Instagram, Linkedin } from "lucide-react";
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/silversoul2k5", icon: Code2 },
-  { label: "Instagram", href: "https://www.instagram.com/silversoul2k5/", icon: MessageCircle },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/arjun-c-518455335/", icon: ContactRound },
-  { label: "XDA Forums", href: "#contact", icon: ExternalLink },
+  { label: "GitHub", href: "https://github.com/silversoul2k5", icon: Github },
+  { label: "Instagram", href: "https://www.instagram.com/silversoul2k5/", icon: Instagram },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/arjun-c-518455335/", icon: Linkedin },
+  { label: "XDA Forums", href: "#contact", icon: Cpu },
 ];
 
-const heroHeading = "Building clean, animated frontends for new businesses.";
 
-const letterHoverAnimation = (index: number) => ({
-  rotateX: [0, -180, 0],
-  opacity: [1, 0.3, 1],
-  transition: {
-    duration: 0.7,
-    delay: index * 0.02,
-    ease: [0.22, 1, 0.36, 1],
-  },
-});
 
 const Hero = () => {
   const panelRef = useRef<HTMLElement | null>(null);
@@ -88,20 +78,9 @@ const Hero = () => {
                 <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
                   Arjun C / frontend developer
                 </p>
-                <motion.h1
-                  className="mt-4 text-4xl font-extrabold leading-tight md:text-[3.25rem] lg:text-[4rem]"
-                  style={{ perspective: 800 }}
-                >
-                  {heroHeading.split("").map((letter, index) => (
-                    <motion.span
-                      key={`${letter}-${index}`}
-                      className="inline-block"
-                      whileHover={letterHoverAnimation(index)}
-                    >
-                      {letter === " " ? "\u00A0" : letter}
-                    </motion.span>
-                  ))}
-                </motion.h1>
+                <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-[-0.03em] md:text-[3.5rem] lg:text-[3.75rem]">
+                  Building clean, animated frontends for new businesses.
+                </h1>
                 <p className="mt-5 text-lg leading-8 text-[var(--muted)] md:text-[1.22rem]">
                   I&apos;m Arjun, founder of 8bit-framework. I build static and animated websites, modern frontend systems, and interactive user experiences.
                 </p>
@@ -149,11 +128,11 @@ const Hero = () => {
                       href={social.href}
                       target={social.href.startsWith("http") ? "_blank" : undefined}
                       rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="inline-flex min-h-14 items-center justify-between gap-4 rounded-full border border-[var(--line)] bg-white/92 px-6 py-4 text-lg font-semibold text-[var(--ink)] shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[var(--line-strong)] hover:shadow-[0_18px_50px_rgba(0,0,0,0.12)] lg:min-w-[260px]"
+                      className="inline-flex min-h-16 w-full items-center justify-between gap-4 rounded-[28px] border border-[var(--line)] bg-white/96 px-6 text-lg font-semibold text-[var(--ink)] shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition hover:-translate-y-1 hover:border-[var(--line-strong)] lg:min-w-[240px]"
                     >
-                      <span className="inline-flex items-center gap-4">
-                        <span className="grid h-11 w-11 place-items-center rounded-full bg-[var(--paper-soft)] text-[var(--ink)] shadow-[inset_0_0_0_1px_rgba(17,17,17,0.08)]">
-                          <Icon size={20} aria-hidden="true" />
+                      <span className="inline-flex items-center gap-3">
+                        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--paper-soft)] text-[var(--ink)]">
+                          <Icon size={18} aria-hidden="true" />
                         </span>
                         <span>{social.label}</span>
                       </span>
