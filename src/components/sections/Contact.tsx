@@ -3,7 +3,39 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Code2, ContactRound, Cpu, Mail, MessageCircle, ScanLine, Send } from "lucide-react";
+import { Mail, ScanLine, Send } from "lucide-react";
+
+const LinkedInIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
+    <path d="M6 9.5v6" />
+    <path d="M6 8.5h.01" />
+    <path d="M9.5 15.5v-4a1.5 1.5 0 0 1 1.5-1.5h0" />
+    <path d="M9.5 15.5h3.5" />
+    <path d="M9.5 11h3.5" />
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
+    <rect x="4" y="4" width="16" height="16" rx="5" />
+    <circle cx="12" cy="12" r="3.5" />
+    <path d="M17.5 6.5h.01" />
+  </svg>
+);
+
+const GitHubIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
+    <path d="M12 2C7.6 2 4 5.6 4 10c0 3.8 2.5 7 5.9 8.1.4.1.5-.2.5-.4v-1.4c-2.4.5-2.9-1.1-2.9-1.1-.4-1-1-1.2-1-1.2-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2.1 1 2.6.8.1-.6.3-1 .5-1.2-1.9-.2-3.9-1-3.9-4.5 0-1 .4-1.8 1-2.4-.1-.2-.4-1.1.1-2.3 0 0 .8-.2 2.4.9.7-.2 1.5-.3 2.2-.3.8 0 1.5.1 2.2.3 1.6-1.1 2.4-.9 2.4-.9.5 1.2.2 2.1.1 2.3.6.6 1 1.4 1 2.4 0 3.5-2 4.3-3.9 4.5.3.3.6.8.6 1.6v2.4c0 .2.1.5.5.4C17.5 17 20 13.8 20 10c0-4.4-3.6-8-8-8Z" />
+  </svg>
+);
+
+const XdaIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">
+    <path d="M6 6l12 12" />
+    <path d="M6 18L18 6" />
+    <path d="M9 6h6" />
+  </svg>
+);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -37,25 +69,25 @@ const Contact = () => {
       label: "LinkedIn",
       value: "Arjun C",
       href: "https://www.linkedin.com/in/arjun-c-518455335/",
-      icon: ContactRound,
+      icon: LinkedInIcon,
     },
     {
       label: "Instagram",
       value: "@silversoul2k5",
       href: "https://www.instagram.com/silversoul2k5/",
-      icon: MessageCircle,
+      icon: InstagramIcon,
     },
     {
       label: "GitHub",
       value: "silversoul2k5",
       href: "https://github.com/silversoul2k5",
-      icon: Code2,
+      icon: GitHubIcon,
     },
     {
       label: "XDA Forums",
       value: "silver.soul7",
       href: undefined,
-      icon: Cpu,
+      icon: XdaIcon,
     },
   ];
 
@@ -109,14 +141,13 @@ const Contact = () => {
                   const Icon = link.icon;
                   const content = (
                     <>
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/12 bg-white/6">
-                        <Icon size={18} aria-hidden="true" />
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/12 bg-white/6 text-[var(--ink)]">
+                        <Icon />
                       </div>
                       <div>
                         <p className="text-sm font-semibold text-white/54">{link.label}</p>
                         <p className="font-semibold text-white">{link.value}</p>
                       </div>
-                      {link.href && <ArrowUpRight size={18} className="ml-auto text-white/72" aria-hidden="true" />}
                     </>
                   );
 
