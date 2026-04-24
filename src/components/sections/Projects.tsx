@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
@@ -81,13 +80,6 @@ const Projects = () => {
                 </p>
               </div>
 
-              <a
-                href="#contact"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[var(--line)] bg-white px-5 text-sm font-semibold text-[var(--ink)] shadow-[0_8px_24px_rgba(0,0,0,0.05)]"
-              >
-                <span>View all work</span>
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-3 text-sm font-medium text-[var(--muted)]">
@@ -129,22 +121,9 @@ const Projects = () => {
                           {project.title}
                         </h3>
                       </div>
-
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-[var(--line)] bg-[var(--paper)]">
-                        <ArrowUpRight size={18} aria-hidden="true" />
-                      </div>
                     </div>
 
                     <p className="leading-7 text-[var(--muted)]">{project.description}</p>
-
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className="rounded-sm border border-black bg-black px-4 py-2 text-sm font-medium text-white">
-                        {project.subtitle}
-                      </span>
-                      <span className="rounded-sm border border-black bg-black px-4 py-2 text-sm font-medium text-white">
-                        {project.studio}
-                      </span>
-                    </div>
                   </div>
                 </motion.a>
               ))}
