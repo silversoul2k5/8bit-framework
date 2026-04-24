@@ -138,10 +138,10 @@ const Projects = () => {
                     <p className="leading-7 text-[var(--muted)]">{project.description}</p>
 
                     <div className="flex flex-wrap items-center gap-3">
-                      <span className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-4 py-2 text-sm font-medium">
+                      <span className="border border-black bg-black px-4 py-2 text-sm font-medium text-white">
                         {project.subtitle}
                       </span>
-                      <span className="rounded-full border border-[var(--line)] bg-[var(--paper)] px-4 py-2 text-sm font-medium">
+                      <span className="border border-black bg-black px-4 py-2 text-sm font-medium text-white">
                         {project.studio}
                       </span>
                     </div>
