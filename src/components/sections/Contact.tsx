@@ -101,7 +101,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="flex w-full max-w-[420px] flex-col gap-3 rounded-[26px] border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] px-5 py-4 shadow-[0_10px_36px_rgba(0,0,0,0.05)] backdrop-blur md:max-w-none md:flex-row md:items-center md:justify-center md:gap-6">
+          <div className="flex w-full max-w-[420px] flex-col gap-3 border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] px-5 py-4 shadow-[0_10px_36px_rgba(0,0,0,0.05)] backdrop-blur md:max-w-none md:flex-row md:items-center md:justify-center md:gap-6">
             <a
               href="mailto:8bitframework@gmail.com"
               className="inline-flex items-center gap-3 text-base font-medium text-[var(--ink)]"
@@ -232,9 +232,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--ink)] px-6 text-sm font-semibold text-[var(--paper)] shadow-[0_12px_30px_rgba(0,0,0,0.12)] disabled:opacity-70"
+                className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--ink)] text-[var(--paper)] shadow-[0_12px_30px_rgba(0,0,0,0.12)] disabled:opacity-70"
+                aria-label={isSubmitting ? "Opening email draft" : "Send message"}
+                title={isSubmitting ? "Opening email draft" : "Send message"}
               >
-                <span>{isSubmitting ? "Opening..." : "Send Message"}</span>
                 <Send size={16} aria-hidden="true" />
               </button>
             </div>
