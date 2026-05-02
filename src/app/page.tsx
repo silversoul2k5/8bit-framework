@@ -4,7 +4,6 @@ import Hero from "@/components/sections/Hero";
 import TextMarquee from "@/components/sections/TextMarquee";
 import Projects from "@/components/sections/Projects";
 import Services from "@/components/sections/Services";
-import Skills from "@/components/sections/Skills";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 
@@ -18,7 +17,6 @@ export default function Home() {
         <TextMarquee />
         <Projects />
         <Services />
-        <Skills />
         <Contact />
       </main>
       <Footer />

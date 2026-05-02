@@ -63,11 +63,6 @@ const Hero = () => {
     []
   );
 
-  const scrollToProjects = () => {
-    const element = document.querySelector("#projects");
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section
       id="home"

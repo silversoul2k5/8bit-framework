@@ -40,7 +40,6 @@ const Footer = () => {
                 {[
                   ["Services", "services"],
                   ["Work", "projects"],
-                  ["Experience", "experience"],
                   ["Contact", "contact"],
                 ].map(([label, href]) => (
                   <li key={label}>

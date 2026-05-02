@@ -20,7 +20,6 @@ const Navigation = () => {
   const navItems = [
     { label: "Work", count: "04", href: "#projects" },
     { label: "Service", count: "04", href: "#services" },
-    { label: "Experience", count: "03", href: "#experience" },
     { label: "Contact", href: "#contact" },
   ];
 
