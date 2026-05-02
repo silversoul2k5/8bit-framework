@@ -101,7 +101,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="flex w-full max-w-[420px] flex-col gap-3 border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] px-5 py-4 shadow-[0_10px_36px_rgba(0,0,0,0.05)] backdrop-blur md:max-w-none md:flex-row md:items-center md:justify-center md:gap-6">
+          <div className="flex w-full max-w-[420px] flex-col gap-3 rounded-[26px] border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] px-5 py-4 shadow-[0_10px_36px_rgba(0,0,0,0.05)] backdrop-blur md:max-w-none md:flex-row md:items-center md:justify-center md:gap-6">
             <a
               href="mailto:8bitframework@gmail.com"
               className="inline-flex items-center gap-3 text-base font-medium text-[var(--ink)]"
@@ -127,7 +127,7 @@ export default function Contact() {
 
           <form
             onSubmit={handleSubmit}
-            className="mt-8 w-full rounded-[28px] border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] p-5 shadow-[0_18px_60px_rgba(0,0,0,0.05)] backdrop-blur md:p-6"
+            className="mt-8 w-full rounded-[8px] border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] p-5 shadow-[0_18px_60px_rgba(0,0,0,0.05)] backdrop-blur md:p-6"
           >
             <div className="grid gap-5 md:grid-cols-2">
               <label htmlFor="salutation" className="block text-sm font-semibold uppercase tracking-[0.08em] text-[var(--ink)]">
@@ -137,7 +137,7 @@ export default function Contact() {
                   name="salutation"
                   value={formData.salutation}
                   onChange={handleInputChange}
-                  className="mt-2 min-h-12 w-full rounded-[16px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
+                  className="mt-2 min-h-12 w-full rounded-[8px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
                 >
                   <option value="">--None--</option>
                   <option value="Mr.">Mr.</option>
@@ -156,7 +156,7 @@ export default function Contact() {
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
-                  className="mt-2 min-h-12 w-full rounded-[16px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
+                  className="mt-2 min-h-12 w-full rounded-[8px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
                 />
               </label>
 
@@ -168,7 +168,7 @@ export default function Contact() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="mt-2 min-h-12 w-full rounded-[16px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
+                  className="mt-2 min-h-12 w-full rounded-[8px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
                 />
               </label>
 
@@ -181,7 +181,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="mt-2 min-h-12 w-full rounded-[16px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
+                  className="mt-2 min-h-12 w-full rounded-[8px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
                 />
               </label>
 
@@ -193,7 +193,7 @@ export default function Contact() {
                   name="company"
                   value={formData.company}
                   onChange={handleInputChange}
-                  className="mt-2 min-h-12 w-full rounded-[16px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
+                  className="mt-2 min-h-12 w-full rounded-[8px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
                 />
               </label>
 
@@ -205,7 +205,7 @@ export default function Contact() {
                   name="mobile"
                   value={formData.mobile}
                   onChange={handleInputChange}
-                  className="mt-2 min-h-12 w-full rounded-[16px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
+                  className="mt-2 min-h-12 w-full rounded-[8px] border border-[var(--line-strong)] bg-white/78 px-4 text-[var(--ink)] focus:border-[var(--ink)] focus:outline-none"
                 />
               </label>
             </div>
@@ -219,7 +219,7 @@ export default function Contact() {
                 onChange={handleInputChange}
                 required
                 rows={5}
-                className="mt-2 w-full resize-none rounded-[18px] border border-[var(--line-strong)] bg-white/78 px-4 py-4 text-[var(--ink)] placeholder:text-[var(--muted)] focus:border-[var(--ink)] focus:outline-none"
+                className="mt-2 w-full resize-none rounded-[8px] border border-[var(--line-strong)] bg-white/78 px-4 py-4 text-[var(--ink)] placeholder:text-[var(--muted)] focus:border-[var(--ink)] focus:outline-none"
                 placeholder="Tell me about your project, timeline, or how I can help."
               />
             </label>
@@ -232,10 +232,9 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--ink)] text-[var(--paper)] shadow-[0_12px_30px_rgba(0,0,0,0.12)] disabled:opacity-70"
-                aria-label={isSubmitting ? "Opening email draft" : "Send message"}
-                title={isSubmitting ? "Opening email draft" : "Send message"}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--ink)] px-6 text-sm font-semibold text-[var(--paper)] shadow-[0_12px_30px_rgba(0,0,0,0.12)] disabled:opacity-70"
               >
+                <span>{isSubmitting ? "Opening..." : "Send Message"}</span>
                 <Send size={16} aria-hidden="true" />
               </button>
             </div>
