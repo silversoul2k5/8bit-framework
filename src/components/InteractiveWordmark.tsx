@@ -10,28 +10,32 @@ import {
 } from "framer-motion";
 import { useMemo, type MouseEvent } from "react";
 
-const letters = "8BIT FRAMEWORK".split("");
+const wordmarkRows = [
+  { text: "8BIT", variant: "outline" as const },
+  { text: "FRAMEWORK", variant: "solid" as const },
+];
 
 function AnimatedLetter({
   letter,
   index,
+  rowIndex,
+  totalInRow,
   pointerX,
   pointerY,
 }: {
   letter: string;
   index: number;
+  rowIndex: number;
+  totalInRow: number;
   pointerX: MotionValue<number>;
   pointerY: MotionValue<number>;
 }) {
-  const offset = ((index % 7) - 3) * 0.16;
-  const lift = (Math.floor(index / 7) - 0.5) * 0.12;
-  const x = useTransform(pointerX, [-0.5, 0.5], [-offset * 42, offset * 42]);
-  const y = useTransform(pointerY, [-0.5, 0.5], [-lift * 42, lift * 42]);
-  const rotate = useTransform(pointerX, [-0.5, 0.5], [-offset * 22, offset * 22]);
+  const centeredIndex = index - (totalInRow - 1) / 2;
+  const centeredRow = rowIndex - (wordmarkRows.length - 1) / 2;
 
-  if (letter === " ") {
-    return <span className="w-[0.22em]" aria-hidden="true" />;
-  }
+  const x = useTransform(pointerX, [-0.5, 0.5], [centeredIndex * -10, centeredIndex * 10]);
+  const y = useTransform(pointerY, [-0.5, 0.5], [centeredRow * -18, centeredRow * 18]);
+  const rotate = useTransform(pointerX, [-0.5, 0.5], [centeredIndex * -2.2, centeredIndex * 2.2]);
 
   return (
     <motion.span
@@ -47,12 +51,12 @@ export default function InteractiveWordmark() {
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(pointerY, [-0.5, 0.5], [8, -8]), {
-    stiffness: 160,
+  const rotateX = useSpring(useTransform(pointerY, [-0.5, 0.5], [5, -5]), {
+    stiffness: 140,
     damping: 22,
   });
-  const rotateY = useSpring(useTransform(pointerX, [-0.5, 0.5], [-10, 10]), {
-    stiffness: 160,
+  const rotateY = useSpring(useTransform(pointerX, [-0.5, 0.5], [-7, 7]), {
+    stiffness: 140,
     damping: 22,
   });
 
@@ -72,18 +76,19 @@ export default function InteractiveWordmark() {
 
   const glowX = useTransform(pointerX, [-0.5, 0.5], ["20%", "80%"]);
   const glowY = useTransform(pointerY, [-0.5, 0.5], ["30%", "70%"]);
-  const spotlight = useMotionTemplate`radial-gradient(circle at ${glowX} ${glowY}, rgba(255,255,255,0.78), rgba(255,255,255,0.08) 28%, transparent 55%)`;
-  const mappedLetters = useMemo(() => letters, []);
+  const spotlight = useMotionTemplate`radial-gradient(circle at ${glowX} ${glowY}, rgba(255,255,255,0.76), rgba(255,255,255,0.08) 32%, transparent 58%)`;
+  const mappedRows = useMemo(() => wordmarkRows, []);
 
   return (
     <div
-      className="relative mx-auto w-full max-w-[1620px] cursor-default px-1 md:px-0"
+      className="relative mx-auto w-full max-w-[1380px] cursor-default px-1 pt-4 md:pt-6"
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      style={{ perspective: 1800 }}
+      style={{ perspective: 1600 }}
+      aria-label="8bit framework"
     >
       <motion.div
-        className="absolute inset-[8%_3%_14%_3%] rounded-[42px] opacity-80 blur-3xl"
+        className="absolute inset-[10%_3%_12%_3%] opacity-80 blur-3xl"
         style={{ background: spotlight }}
       />
 
@@ -91,15 +96,26 @@ export default function InteractiveWordmark() {
         className="relative"
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       >
-        <div className="flex flex-wrap items-center justify-center gap-x-[0.06em] gap-y-0 uppercase leading-[0.82] text-[clamp(4.6rem,15vw,13rem)] font-black tracking-[-0.02em] text-[var(--ink)] lg:text-[clamp(7rem,14vw,14rem)]">
-          {mappedLetters.map((letter, index) => (
-            <AnimatedLetter
-              key={`${letter}-${index}`}
-              letter={letter}
-              index={index}
-              pointerX={pointerX}
-              pointerY={pointerY}
-            />
+        <div className="space-y-[-0.12em] text-center uppercase leading-[0.88]">
+          {mappedRows.map((row, rowIndex) => (
+            <div
+              key={row.text}
+              className={`flex items-center justify-center gap-x-[0.035em] text-[clamp(2rem,8.3vw,7.6rem)] font-black tracking-[-0.04em] md:text-[clamp(3.25rem,7.5vw,9.4rem)] ${
+                row.variant === "outline" ? "outline-title" : "text-[var(--ink)]"
+              }`}
+            >
+              {row.text.split("").map((letter, index) => (
+                <AnimatedLetter
+                  key={`${row.text}-${letter}-${index}`}
+                  letter={letter}
+                  index={index}
+                  rowIndex={rowIndex}
+                  totalInRow={row.text.length}
+                  pointerX={pointerX}
+                  pointerY={pointerY}
+                />
+              ))}
+            </div>
           ))}
         </div>
       </motion.div>

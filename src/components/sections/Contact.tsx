@@ -83,10 +83,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-anchor px-4 py-14 md:py-20">
+    <section id="contact" className="section-anchor px-4 py-14 md:py-18">
       <div className="section-shell">
         <motion.div
-          className="mx-auto flex max-w-[560px] flex-col items-center"
+          className="mx-auto flex max-w-[860px] flex-col items-center"
           initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
@@ -101,7 +101,7 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="flex w-full max-w-[420px] flex-col gap-3 rounded-[26px] border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] px-5 py-4 shadow-[0_10px_36px_rgba(0,0,0,0.05)] backdrop-blur md:max-w-none md:flex-row md:items-center md:justify-center md:gap-6">
+          <div className="flex w-full flex-col gap-3 rounded-[26px] border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] px-5 py-4 shadow-[0_10px_36px_rgba(0,0,0,0.05)] backdrop-blur md:flex-row md:items-center md:justify-center md:gap-8">
             <a
               href="mailto:8bitframework@gmail.com"
               className="inline-flex items-center gap-3 text-base font-medium text-[var(--ink)]"
@@ -127,7 +127,7 @@ export default function Contact() {
 
           <form
             onSubmit={handleSubmit}
-            className="mt-8 w-full rounded-[8px] border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] p-5 shadow-[0_18px_60px_rgba(0,0,0,0.05)] backdrop-blur md:p-6"
+            className="mt-8 w-full rounded-[8px] border border-[var(--line-strong)] bg-[rgba(248,248,245,0.82)] p-5 shadow-[0_18px_60px_rgba(0,0,0,0.05)] backdrop-blur md:p-7"
           >
             <div className="grid gap-5 md:grid-cols-2">
               <label htmlFor="salutation" className="block text-sm font-semibold uppercase tracking-[0.08em] text-[var(--ink)]">
@@ -232,7 +232,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--ink)] px-6 text-sm font-semibold text-[var(--paper)] shadow-[0_12px_30px_rgba(0,0,0,0.12)] disabled:opacity-70"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[var(--ink)] px-6 text-sm font-semibold text-[var(--paper)] shadow-[0_12px_30px_rgba(0,0,0,0.12)] hover:-translate-y-0.5 disabled:opacity-70"
               >
                 <span>{isSubmitting ? "Opening..." : "Send Message"}</span>
                 <Send size={16} aria-hidden="true" />

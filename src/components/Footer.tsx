@@ -14,7 +14,7 @@ const Footer = () => {
     <footer className="px-4 pb-6 pt-3">
       <div className="section-shell rounded-[28px] border border-[var(--line)] bg-[var(--ink)] text-[var(--paper)] shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
         <div className="px-5 py-10 md:px-8 md:py-12">
-          <div className="mb-10 grid gap-10 md:grid-cols-[1.2fr_0.7fr_0.7fr]">
+          <div className="mb-10 grid gap-10 md:grid-cols-[1.25fr_0.8fr_0.8fr]">
             <motion.div
               initial={false}
               whileInView={{ opacity: 1, y: 0 }}
@@ -72,6 +72,10 @@ const Footer = () => {
                 </a>
                 <a href="https://www.linkedin.com/in/arjun-c-518455335/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white">
                   <span>LinkedIn</span>
+                  <ArrowUpRight size={14} aria-hidden="true" />
+                </a>
+                <a href="https://xdaforums.com/m/silver-soul7.12793521/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white">
+                  <span>XDA Forums</span>
                   <ArrowUpRight size={14} aria-hidden="true" />
                 </a>
               </div>

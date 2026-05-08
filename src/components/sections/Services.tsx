@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Code2, LayoutTemplate, Sparkles, WandSparkles } from "lucide-react";
 
@@ -36,115 +35,64 @@ const services = [
 ];
 
 const Services = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
     <section id="services" className="section-anchor px-4 py-3 md:py-4">
-      <div className="section-shell">
+      <div className="section-shell overflow-hidden rounded-[30px] border border-black/8 bg-[#121212] text-white shadow-[0_20px_70px_rgba(0,0,0,0.14)]">
         <motion.section
-          className="relative overflow-hidden rounded-[32px] px-5 py-8 md:px-8 md:py-10"
+          className="relative px-5 py-8 md:px-8 md:py-10 lg:px-10"
           initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.85 }}
         >
-          <div className="absolute inset-0 rounded-[32px] bg-[linear-gradient(180deg,rgba(255,255,255,0.35),rgba(255,255,255,0.1))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent_34%)]" />
+
           <div className="relative z-10">
-            <div className="flex items-end justify-between gap-4">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
-                <p className="text-3xl font-semibold uppercase leading-none md:text-5xl">/Service</p>
-                <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)] md:text-lg">
-                  Design and frontend support focused on launch-ready interfaces, clean structure, and animation that
-                  still feels usable.
+                <p className="text-3xl font-semibold uppercase leading-none md:text-5xl">/Services</p>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-white/66 md:text-lg">
+                  Design and frontend support for early-stage brands that want sharper messaging, better interaction,
+                  and cleaner delivery.
                 </p>
               </div>
+
+              <p className="text-sm font-medium uppercase tracking-[0.16em] text-white/46">
+                Four ways I usually help
+              </p>
             </div>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-8 grid gap-px overflow-hidden rounded-[26px] bg-white/10 md:grid-cols-2">
               {services.map((service, index) => {
                 const Icon = service.icon;
-                const isActive = index === activeIndex;
 
                 return (
                   <motion.div
                     key={service.title}
-                    layout
-                    onMouseEnter={() => setActiveIndex(index)}
-                    className={`overflow-hidden rounded-[28px] border transition-all duration-500 ${
-                      isActive
-                        ? "border-black/5 bg-[#171717] text-white shadow-[0_24px_50px_rgba(0,0,0,0.18)]"
-                        : "border-transparent bg-transparent"
-                    }`}
+                    className="group bg-[#121212] p-6 md:p-8"
+                    initial={false}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.7, delay: index * 0.06 }}
                   >
-                    <div
-                      className={`grid gap-6 px-4 py-5 md:px-6 md:py-6 ${
-                        isActive ? "lg:grid-cols-[1fr_250px]" : "lg:grid-cols-[1fr_auto]"
-                      }`}
-                    >
-                      <div className={`${!isActive ? "border-b border-[var(--line)] pb-5 lg:border-b-0 lg:pb-0" : ""}`}>
-                        <div className="flex items-start justify-between gap-4">
-                          <div className="flex items-start gap-4">
-                            <div
-                              className={`grid h-12 w-12 shrink-0 place-items-center rounded-full border ${
-                                isActive ? "border-white/12 bg-white/8" : "border-[var(--line)] bg-white/70"
-                              }`}
-                            >
-                              <Icon size={20} aria-hidden="true" />
-                            </div>
-                            <div>
-                              <h3 className="text-2xl font-semibold uppercase leading-tight md:text-[2rem]">
-                                {service.title}
-                              </h3>
-                              {isActive && (
-                                <>
-                                  <p className="mt-4 max-w-xl text-base leading-7 text-white/78">
-                                    {service.description}
-                                  </p>
-                                  <p className="mt-3 max-w-xl text-sm leading-6 text-white/54">
-                                    {service.detail}
-                                  </p>
-                                </>
-                              )}
-                            </div>
-                          </div>
-
-                          <div
-                            className={`grid h-11 w-11 shrink-0 place-items-center rounded-full border ${
-                              isActive ? "border-white/16 bg-white/6" : "border-[var(--line)] bg-white/70"
-                            }`}
-                          >
-                            <ArrowUpRight size={18} aria-hidden="true" />
-                          </div>
-                        </div>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="grid h-12 w-12 place-items-center rounded-full border border-white/12 bg-white/6 text-white/80">
+                        <Icon size={20} aria-hidden="true" />
                       </div>
+                      <span className="text-sm font-semibold uppercase tracking-[0.14em] text-white/38">
+                        0{index + 1}
+                      </span>
+                    </div>
 
-                      {isActive && (
-                        <motion.div
-                          layout
-                          className="flex min-h-[150px] items-center justify-center gap-3"
-                          initial={{ opacity: 0, x: 28 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.45 }}
-                        >
-                          {[0, 1, 2].map((item) => (
-                            <div
-                              key={item}
-                              className={`w-[74px] rounded-[20px] border border-white/10 bg-[linear-gradient(180deg,#f7f7f6,#dedfdb)] p-2 text-black shadow-[0_18px_30px_rgba(0,0,0,0.2)] ${
-                                item === 0 ? "rotate-[-10deg]" : item === 2 ? "rotate-[10deg]" : "-translate-y-4"
-                              }`}
-                            >
-                              <div className="h-[124px] rounded-[16px] bg-[linear-gradient(180deg,#f9fafb,#edf0f1)] p-2">
-                                <div className="h-2 w-9 rounded-full bg-black/10" />
-                                <div className="mt-4 h-10 rounded-[12px] bg-black/8" />
-                                <div className="mt-4 space-y-2">
-                                  <div className="h-2 rounded-full bg-black/8" />
-                                  <div className="h-2 w-3/4 rounded-full bg-black/6" />
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </motion.div>
-                      )}
+                    <h3 className="mt-8 text-2xl font-semibold uppercase leading-tight md:text-[2rem]">
+                      {service.title}
+                    </h3>
+                    <p className="mt-4 max-w-xl text-base leading-7 text-white/72">{service.description}</p>
+                    <p className="mt-4 max-w-xl text-sm leading-6 text-white/46">{service.detail}</p>
+
+                    <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white/88">
+                      <span>Explore service</span>
+                      <ArrowUpRight size={16} aria-hidden="true" className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </motion.div>
                 );

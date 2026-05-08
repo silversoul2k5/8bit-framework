@@ -12,7 +12,7 @@ export default function Home() {
     <div className="min-h-full bg-[var(--paper)]">
       <OpeningCountdown />
       <Navigation />
-      <main className="pt-24 pb-4 md:pt-28 md:pb-6">
+      <main className="pb-4 pt-[5.5rem] md:pb-6 md:pt-[6.5rem]">
         <Hero />
         <TextMarquee />
         <Projects />

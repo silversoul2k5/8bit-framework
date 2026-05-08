@@ -4,10 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { type MouseEvent, useState } from "react";
 
-const portraitPosition = "object-[center_14%]";
+const portraitPosition = "object-[center_12%]";
 
 export default function HeroPortrait() {
-  const [pointer, setPointer] = useState({ x: 50, y: 36, active: false });
+  const [pointer, setPointer] = useState({ x: 50, y: 38, active: false });
 
   const updatePointer = (event: MouseEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -22,11 +22,11 @@ export default function HeroPortrait() {
   };
 
   return (
-    <div className="group relative mx-auto w-full max-w-[480px] xl:max-w-[520px]">
-      <div className="absolute inset-x-[10%] bottom-2 h-14 rounded-full bg-black/20 blur-2xl" />
+    <div className="group relative mx-auto w-full max-w-[360px] sm:max-w-[410px] xl:max-w-[450px]">
+      <div className="absolute inset-x-[12%] bottom-2 h-12 rounded-full bg-black/18 blur-2xl" />
 
       <div
-        className="relative aspect-[0.8] overflow-hidden rounded-[32px] border border-white/70 bg-white/60 shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
+        className="relative aspect-[0.78] overflow-hidden rounded-[30px] border border-white/70 bg-white/72 shadow-[0_20px_70px_rgba(0,0,0,0.1)]"
         onMouseMove={updatePointer}
         onMouseEnter={() => setPointer((current) => ({ ...current, active: true }))}
         onMouseLeave={() => setPointer((current) => ({ ...current, active: false }))}
@@ -36,8 +36,9 @@ export default function HeroPortrait() {
           alt="Portrait of Arjun C"
           fill
           priority
-          className={`h-full w-full object-cover ${portraitPosition} scale-[1.02] grayscale contrast-125 brightness-105 transition-transform duration-500 group-hover:scale-[1.05]`}
-          sizes="(max-width: 768px) 70vw, 420px"
+          loading="eager"
+          className={`h-full w-full object-cover ${portraitPosition} scale-[1.015] grayscale contrast-125 brightness-105 transition-transform duration-500 group-hover:scale-[1.04]`}
+          sizes="(max-width: 768px) 82vw, (max-width: 1280px) 34vw, 450px"
         />
 
         <motion.div
@@ -45,23 +46,23 @@ export default function HeroPortrait() {
           initial={false}
           animate={{
             clipPath: pointer.active
-              ? `circle(140px at ${pointer.x}% ${pointer.y}%)`
+              ? `circle(128px at ${pointer.x}% ${pointer.y}%)`
               : "circle(0px at 50% 50%)",
           }}
-          transition={{ type: "spring", stiffness: 180, damping: 22 }}
+          transition={{ type: "spring", stiffness: 180, damping: 24 }}
         >
           <Image
             src="/images/arjun-portrait.jpg"
             alt=""
             aria-hidden="true"
             fill
-            className={`h-full w-full object-cover ${portraitPosition} scale-[1.02] transition-transform duration-500 group-hover:scale-[1.05]`}
-            sizes="(max-width: 768px) 70vw, 420px"
+            className={`h-full w-full object-cover ${portraitPosition} scale-[1.015] transition-transform duration-500 group-hover:scale-[1.04]`}
+            sizes="(max-width: 768px) 82vw, (max-width: 1280px) 34vw, 450px"
           />
         </motion.div>
 
-        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/20 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/12 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/18 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/10 to-transparent" />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ const Navigation = () => {
     >
       <div className="section-shell">
         <div
-          className={`mx-auto flex max-w-6xl items-center justify-between rounded-[28px] border border-white/75 bg-[rgba(248,248,245,0.88)] px-4 py-3 shadow-[0_16px_50px_rgba(0,0,0,0.08)] backdrop-blur-xl transition-all md:px-6 ${
+          className={`mx-auto flex items-center justify-between rounded-[30px] border border-white/75 bg-[rgba(248,248,245,0.88)] px-4 py-3 shadow-[0_16px_50px_rgba(0,0,0,0.08)] backdrop-blur-xl transition-all md:px-6 ${
             isScrolled ? "translate-y-0" : "translate-y-0"
           }`}
         >
@@ -61,8 +61,8 @@ const Navigation = () => {
 
           <ul className="hidden items-center gap-10 md:flex">
             {navItems.map((item) => (
+              <li key={item.label}>
               <a
-                key={item.label}
                 href={item.href}
                 onClick={(event) => {
                   event.preventDefault();
@@ -75,6 +75,7 @@ const Navigation = () => {
                   <span className="text-sm text-[var(--muted)]">[{item.count}]</span>
                 )}
               </a>
+              </li>
             ))}
           </ul>
 
@@ -108,7 +109,7 @@ const Navigation = () => {
         animate={{ height: isOpen ? "auto" : 0 }}
         transition={{ duration: 0.3 }}
       >
-        <ul className="section-shell mt-3 flex max-w-[calc(100%-32px)] flex-col gap-2 rounded-[24px] border border-white/70 bg-[rgba(248,248,245,0.94)] p-3 shadow-[0_18px_60px_rgba(10,9,9,0.12)] backdrop-blur-xl">
+        <ul className="section-shell mt-3 flex flex-col gap-2 rounded-[24px] border border-white/70 bg-[rgba(248,248,245,0.94)] p-3 shadow-[0_18px_60px_rgba(10,9,9,0.12)] backdrop-blur-xl">
           {navItems.map((item, idx) => (
             <motion.li
               key={item.label}
